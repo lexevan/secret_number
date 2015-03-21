@@ -39,7 +39,7 @@ if guess_one != secret_number
   puts "Too low. Guess again." if guess_two < secret_number
 end
 
-if guess_one || guess_two != secret_number
+if guess_one && guess_two != secret_number
   puts "This is your last attempt to guess the secret number. What is your third and final guess?"
   guess_three = gets.strip
   guess_three = guess_three.to_i
