@@ -19,7 +19,7 @@ secret_number = rand(10)
 
 victory_msg = "You win #{player_name}. The game is over. Let's play again soon!"
 
-lose_msg = "Game over. You lose. Let's play again sometime."
+lose_msg = "Game over. You lose. The secret number was #{secret_number}. Let's play again sometime."
 
 # game #
 
