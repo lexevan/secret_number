@@ -15,38 +15,31 @@ puts "Let's begin."
 
 secret_number = rand(10)
 
-# Victory message #
+# messages #
 
 victory_msg = "You win #{player_name}. The game is over. Let's play again soon!"
 
+lose_msg = "Game over. You lose. Let's play again sometime."
+
 # game #
 
-puts "You have 3 attempts to guess the secret number. What is your first guess?"
-guess_one = gets.strip
-guess_one = guess_one.to_i
+attempts = 3
 
-puts victory_msg if guess_one == secret_number
-puts "Too high. Guess again." if guess_one > secret_number
-puts "Too low. Guess again." if guess_one < secret_number
-
-if guess_one != secret_number
-  puts "You have 2 more attempts to guess the secret number. What is your second guess?"
-  guess_two = gets.strip
-  guess_two = guess_two.to_i
-
-  puts victory_msg if guess_two == secret_number
-  puts "Too high. Guess again." if guess_two > secret_number
-  puts "Too low. Guess again." if guess_two < secret_number
+while attempts > 0 
+  puts "You have #{attempts} attempts remaining. Please enter your guess."
+  user_guess = gets.strip.to_i
+  if user_guess == secret_number
+    puts "You guessed it."
+  elsif user_guess < secret_number
+    puts "Too low. Guess again."
+  elsif user_guess > secret_number
+    puts "Too high. Guess again."
+  end
+  attempts -= 1
 end
 
-if guess_one && guess_two != secret_number
-  puts "This is your last attempt to guess the secret number. What is your third and final guess?"
-  guess_three = gets.strip
-  guess_three = guess_three.to_i
-
-  puts victory_msg if guess_three == secret_number
-  puts "Sorry #{player_name}, you lost this game. The secret number was #{secret_number}. Let's play again sometime." if guess_three != secret_number
+if user_guess == secret_number
+  puts victory_msg
+else
+  puts lose_msg
 end
-
-
-
