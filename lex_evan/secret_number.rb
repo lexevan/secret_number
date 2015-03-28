@@ -29,17 +29,13 @@ while attempts > 0
   puts "You have #{attempts} attempts remaining. Please enter your guess."
   user_guess = gets.strip.to_i
   if user_guess == secret_number
-    puts "You guessed it."
+    puts "You guessed it. #{victory_msg}"
   elsif user_guess < secret_number
     puts "Too low. Guess again."
   elsif user_guess > secret_number
     puts "Too high. Guess again."
   end
   attempts -= 1
-end
-
-if user_guess == secret_number
-  puts victory_msg
-else
-  puts lose_msg
+  break if user_guess == secret_number
+  puts lose_msg if attempts == 0
 end
